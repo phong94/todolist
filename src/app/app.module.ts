@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ListTodoComponent } from './list-todo/list-todo.component';
     HttpModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { UserService } from '../services/user.service';
+
 @Component({
     selector: 'add-user',
     templateUrl: './add-user.component.html',
@@ -8,5 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class AddUserComponent {
-    test = 'test';
+    constructor(private userService: UserService) {}
+    addNewUser() {
+        this.userService.userArray.push("test");
+    }
 }
