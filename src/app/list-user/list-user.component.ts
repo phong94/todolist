@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -9,11 +9,13 @@ import { UserService } from '../services/user.service';
 })
 
 export class ListUserComponent {
+    @Input() selectedUser: string;
     constructor(private userService: UserService) {}
-
+    
     userArray:string[] = this.userService.userArray;
     
-    test() {
-        console.log("hi", this.userArray);
+    selectUser(event, user: string) {
+        this.selectedUser = user;
+        this.userService.currentUser.emit(this.selectedUser);
     }
 }

@@ -1,3 +1,6 @@
-test
-<div *ngFor="let user of userArray">{{user}}</div>
-<button class="btn" (click)="test()">Test</button>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let user of userArray" (click)="selectUser($event, user)">
+        {{user}}
+        <span class="badge badge-default badge-pill">10</span>
+    </li>
+</ul>

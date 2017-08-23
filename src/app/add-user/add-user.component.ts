@@ -10,8 +10,18 @@ import { UserService } from '../services/user.service';
 })
 
 export class AddUserComponent {
+    userName: string;
     constructor(private userService: UserService) {}
+
     addNewUser() {
-        this.userService.userArray.push("test");
+        if (this.userName == null || this.userName == '') {
+            // Do nothing but later we need to have a message
+            console.log("Username cannot be null or empty!")
+        }
+
+        else {
+            this.userService.userArray.push(this.userName);
+            this.userName = '';
+        }
     }
 }
