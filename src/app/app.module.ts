@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 /** Import all Services */
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { DbService } from './services/db.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AuthService } from './services/auth.service';
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [UserService, AuthService],
+  providers: [UserService, AuthService, DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

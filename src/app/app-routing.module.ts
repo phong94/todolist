@@ -5,7 +5,7 @@ import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component: SigninComponent },
+    { path: '', component: HomeComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'home', component: HomeComponent }
