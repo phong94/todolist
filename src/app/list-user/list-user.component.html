@@ -1,5 +1,5 @@
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let user of userArray" (click)="selectUser($event, user)">
+    <li class="list-group-item" *ngFor="let user of firebaseUserArray" (click)="selectUser($event, user)">
         {{user}}
         <span class="badge badge-default badge-pill">10</span>
         <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>

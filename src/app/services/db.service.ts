@@ -12,20 +12,45 @@ export class DbService {
     }
 
     deleteUser(user: string) {
-        //firebase.database().ref('/data/KsRezEyx7Do6ENfHM3r')
+        // Get a reference to the firebase database
         var data = firebase.database().ref('/data/');
+
+        // Read data once
         data.once('value', function(snapshot) {
-            var list = snapshot.val();
-            for (let x in list) {
-                if (list[x] == 'aaaaa') {
-                    console.log("GOTEMLOL");
+
+            // Get a snapshot of the data
+            var userList = snapshot.val();
+
+            // Loop through the keys and find user to remove
+            for (let key in userList) {
+                if (userList[key] == user) {
+                    firebase.database().ref('/data/' + key).remove();
                 }
             };
             //console.log(list['-KsRo8y3YpjmHxc0nteX']);
         });
         //firebase.database().ref('/data/-KsRezEyx7Do6ENfHM3r').remove();
-        let userJsonObj = {"user": user};
-        //return this.http.delete('https://todoapp-2b701.firebaseio.com/data.json', 'KsHospceD5lXXMLZFXx');
+    }
+
+    getUsers(): Promise<any> {
+        let userArray: string[] = [];
+        var data = firebase.database().ref('/data/');
+
+        return new Promise<any>((resolve, reject) => {
+            data.on('value', function(snapshot) {
+                userArray = [];
+                var userList = snapshot.val();
+
+                for (let key in userList) {
+                    userArray.push(userList[key]);
+                }
+
+                resolve(userArray);
+            });
+        })
+        
+
+       
     }
 
     
