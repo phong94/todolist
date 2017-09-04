@@ -1,3 +1,16 @@
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-10">
+            <input type="text" class="form-control" (keyup.enter)="addNewUser()" placeholder="Username" [(ngModel)]="userName">
+        </div>
+
+        <div class="col-lg-2">
+            <button class="btn btn-primary" (click)="addNewUser()">Add User</button>
+        </div>
+    </div>
+
+</div>
+
 <ul class="list-group">
     <li class="list-group-item" *ngFor="let user of firebaseUserArray" (click)="selectUser($event, user)">
         {{user}}

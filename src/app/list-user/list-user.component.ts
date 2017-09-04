@@ -10,16 +10,17 @@ import { DbService } from '../services/db.service';
 })
 
 export class ListUserComponent {
-    firebaseUserArray: any[] = [];
     @Input() selectedUser: string;
     constructor(private userService: UserService, private dbService: DbService) {}
+    
+    userName: string;
+    userArray:string[] = this.userService.userArray;
+    firebaseUserArray: string[] = [];
 
     ngOnInit() {
         this.displayUsers();
     }
-    
-    userArray:string[] = this.userService.userArray;
-    
+
     displayUsers() {
         return this.dbService.getUsers().then(
             (result) => this.firebaseUserArray = result
@@ -33,6 +34,25 @@ export class ListUserComponent {
 
     deleteUser(user: string) {
         this.dbService.deleteUser(user);
+        this.userService.currentUser.emit(null);
         this.displayUsers();
     }
+
+    addNewUser(){
+		if(this.userName == null || this.userName == ""){
+			//Do nothing
+		}
+		else{
+			this.dbService.storeUser(this.userName).subscribe(
+				(response) => console.log("added user: ", response),
+				(error) => console.log(error)
+			);
+
+			this.userName = "";
+		}	
+
+        setTimeout(() => {
+            this.displayUsers();
+        }, 500);
+	}
 }

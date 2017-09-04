@@ -8,12 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 /** Import all Components */
 import { AppComponent } from './app.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+
+/** Import all Models */
+import { User } from './models/user';
+import { Chore } from './models/chore';
 
 /** Import all Services */
 import { UserService } from './services/user.service';
@@ -23,7 +26,6 @@ import { DbService } from './services/db.service';
 @NgModule({
   declarations: [
     AppComponent,
-    AddUserComponent,
     ListUserComponent,
     ListTodoComponent,
     SigninComponent,
