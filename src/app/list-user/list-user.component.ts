@@ -30,6 +30,7 @@ export class ListUserComponent {
     selectUser(event, user: string) {
         this.selectedUser = user;
         this.userService.currentUser.emit(this.selectedUser);
+        this.dbService.getCurrentUserKey(this.selectedUser);
     }
 
     deleteUser(user: string) {
